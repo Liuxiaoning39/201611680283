@@ -195,6 +195,110 @@
 ----------
 
 
+      print()函数除了一些打印的位置参数以及sep关键字参数外，end是另一个关键字参数，用来控制当前print语句行尾打印字符的值，
+      当不设置end关键字时，默认是打印换行。 已经完成的九九表基本已经可以使用了，但我们是希望尽量做到完美。
+      目前的不完美主要是因为i*j的结果可能是1位数，也可能是2位数，造成打印时候对不齐。因此我们需要用print()函数控制打印，使格式统一。
+
+
+
+      format()是字符串类型的一个方法，可以利用format()方法来进行字符串的格式统一。
+      基本用法1：'xxx{位置}xxx{位置}...xxx{位置}xxx'.
+                format(变量, 变量..., 变量)。
+                format中的多个变量是一个序列，从0开始自动连续编号，左侧字符串内的位置就是变量的索引(不要求一定顺序排列)，
+                按照索引位置，由右侧各个变量的值来替换{位置}。
+      基本用法2：'xxx{:整数}xxx{:整数}...xxx{:整数}xxx'.format(变量, 变量..., 变量)。
+                左侧字符串内如果没有指定索引，则按照右侧序列变量顺序替换字符串内的{:整数}。
+                {:整数}表示替换变量在字符串中的格式，其中的整数表示替换变量占据的宽度(字符个数)。
+
+
+
+
+***
+      转义字符	转义后含义
+      \\	Backslash ()  
+      \'	Single quote (')
+      \"	Double quote (")
+      \a	ASCII Bell (BEL)
+      \b	ASCII Backspace (BS)
+      \f	ASCII Formfeed (FF)
+      \n	ASCII Linefeed (LF)
+      \r	ASCII Carriage Return (CR)
+      \t	ASCII Horizontal Tab (TAB)
+***
+
+***
+      sum(...), max(...), min(...)函数
+      即实现对序列求和、求最大值，最小值的函数。
+***
+
+***
+      pass, continue, break, return, exit()
+      
+      以上关键字/函数的区别与练习可用以下表格概括：
+
+      关键字	      功能
+      pass	     什么也不做，纯占位用
+      continue   跳出本次循环
+      break	     跳出本层循环
+      return     退出函数
+      exit()     退出程序
+***
+
+
+
+str.format()
+      格式字符串的format()方法很多时候，配合print()一起使用，
+      具体内容可参考： https://docs.python.org/3/library/string.html#formatstrings
+      这里仅举一些实例进行一般的用法说明。
+
+      # str.format()示例1
+                  print('{}, {}, {}'.format('a', 'b', 'c'))
+                  print('{2}, {1}, {0}'.format('a', 'b', 'c'))
+                  print('{0}{1}{0}'.format('abra', 'cad'))     # arguments' indices can be repeated
+
+      # str.format()示例2
+
+                  print('Coordinates: {latitude}, {longitude}'.format(latitude='37.24N', longitude='-115.81W'))
+                  
+                  coord = [3, 5]
+                  print('X: {0[0]};  Y: {0[1]}'.format(coord))
+      # str.format()示例3
+
+                  print('{:<30}'.format('left aligned'))
+                  print('{:>30}'.format('right aligned'))
+                  print('{:^30}'.format('centered'))
+                  print('{:*^30}'.format('centered'))     # use '*' as a fill char
+      # str.format()示例4
+
+                  print('{:+f}; {:+f}'.format(3.14, -3.14))
+                  print('{: f}; {: f}'.format(3.14, -3.14))
+
+                  print('{:,}'.format(1234567890))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
