@@ -67,42 +67,49 @@
         
 5.
 例：
-fh = open(r'd:\temp\idioms_correct.txt', 'w')
-for idiom in idioms:
-    correct_idioms.append(idiom+'\n')
-fh.writelines(correct_idioms)
-fh.close()
-示例代码8-5将每个idiom加入换行符，再利用writelines(...)写入就没有问题了。也可以利用列表推导，使代码更简洁。
+        fh = open(r'd:\temp\idioms_correct.txt', 'w')
+        correct_idioms=[]
+        for idiom in idioms:
+            correct_idioms.append(idiom+'\n')
+        fh.writelines(correct_idioms)
+        fh.close()
+        ---
+            将每个idiom加入换行符，再利用writelines(...)写入就没有问题了。也可以利用列表推导，使代码更简洁。
+        ---
 
-# 示例代码8-6
+6.
+例：
+        fh = open(r'd:\temp\idioms_correct.txt', 'w')
+        idioms = [idiom + '\n' for idiom in idioms]
+        fh.writelines(idioms)
+        fh.close()
+        ---
+            [idiom + '\n' for idiom in idioms]是列表推导，
+            功能与示例代码5中for循环结构功能类似，都是将idioms中每一个idiom取出后加上\n，最后形成一个列表。
+            这里让idioms指向用列表推导得到的新列表，没有必要再如示例代码8-5那样定义新的变量correct_idioms。
+            也可以采用如下方式保存：
+7
+例：
+        fh = open(r'd:\temp\idioms_correct.txt', 'w')
+        for idiom in idioms:
+            fh.write(idiom + '\n')
+        fh.close()
+        ---
+            write()是向文件写入字符串的方法，其基本用法是：文件对象.write(str)，该方法将一个str写入文件对象。
+            因此需要加入换行符，将每个成语独立成一行。
+            更为常用的方法是：
+        ---
 
-fh = open(r'd:\temp\idioms_correct.txt', 'w')
-idioms = [idiom + '\n' for idiom in idioms]
-fh.writelines(idioms)
-fh.close()
-示例代码8-6中：
+8
+例：
 
-[idiom + '\n' for idiom in idioms]是列表推导，功能与示例代码8-5中for循环结构功能类似，都是将idioms中每一个idiom取出后加上\n，最后形成一个列表。这里让idioms指向用列表推导得到的新列表，没有必要再如示例代码8-5那样定义新的变量correct_idioms。 也可以采用如下方式保存：
-# 示例代码8-7
+        fh = open(r'd:\temp\idioms_correct.txt', 'w')
+        fh.write('\n'.join(idioms))
+        fh.close()
+        ---
 
-fh = open(r'd:\temp\idioms_correct.txt', 'w')
-for idiom in idioms:
-    fh.write(idiom + '\n')
-fh.close()
-示例代码8-7中：
-
-write()是向文件写入字符串的方法，其基本用法是：文件对象.write(str)，该方法将一个str写入文件对象。因此需要加入换行符，将每个成语独立成一行。
-更为常用的方法是：
-
-# 示例代码8-8
-
-fh = open(r'd:\temp\idioms_correct.txt', 'w')
-fh.write('\n'.join(idioms))
-fh.close()
-示例代码8-8中：
-
-str.join(...)将序列内所有元素之间均用str进行连接的方法，其基本用法是：分隔字符串.join(...)。
-前面只是完成了成语搜集和保存的工作，现在我们考虑游戏过程的实现。首先写出游戏main()函数的伪码：
+            str.join(...)将序列内所有元素之间均用str进行连接的方法，其基本用法是：分隔字符串.join(...)。
+            前面只是完成了成语搜集和保存的工作，现在我们考虑游戏过程的实现。首先写出游戏main()函数的伪码：
 
 # main()函数伪码
 显示游戏菜单
