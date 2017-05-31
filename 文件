@@ -1,0 +1,16 @@
+语句for line in fr:是从fr文件对象中读取一行，fr是用open()函数打开的文件对象，可用for语句来依次访问其每一行。
+这样，抽取语料.txt的前5000行，保存到test.txt文件中，作为测试文件，我们先对这个小测试文件(约1M bytes)即可。
+
+get_word_table(filename)函数与第8节中的字表统计函数的方法类似，参数filename是要统计词频的文件。
+得到test.txt文件的词表以后，我们统计词频
+
+count_words_freq(filename, words)函数有两个参数，分别是要统计的文本文件filename及词表words。
+count()是统计字符串频次的方法，基本用法为：字符串.count(str)，参数也是字符串，功能是在字符串对象中统计参数字符串出现的频次，返回一个整型数。
+
+word_freq_pairs是二维列表，初始为空。其中每一个元素也是列表，存放[词，词频]。
+通过一个列表解析，得到words，存放filename文件中所有去掉词性标记后的词汇。
+在for word in words:循环中,对每一个在words中的词汇，如果与word_freq_pairs中某一个item相同，则对应的item的频次加一，如果不在，则在word_freq_pairs中增加一个item，
+其初始频次为1。其中，for...else的用法与while...else的用法类似。
+
+我们仍然用test.txt作为测试实验。
+for line in f:中，将每次从f中，也就是filename中读入一行赋值给line。
