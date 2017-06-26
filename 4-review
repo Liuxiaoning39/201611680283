@@ -107,3 +107,137 @@ print('Third:', zero_flag(-100))
       
       
       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      细心的读者可能已经注意到一件事，在my_abs()函数与compute_sum()函数内，有相同的变量名number。在compute_sum()函数与主程序中，有相同的变量名i。但是注意，这几个名字相同的变量，并非同一个变量。
+python程序可根据函数定义(0、1或多个)及主程序划分为多个区域，每个区域内都的变量(对象)的在各个区域的使用(作用)有一定规则限制，因此这种区域称作作用域，又分为函数作用域(对应函数体)与全局作用域(对应主程序)。
+每个函数内部的变量只属于该函数的函数体，主程序无法使用。例：
+#函数作用域示例1
+
+def inner(n):
+    n = 10
+    print('inner', n)
+
+#主程序
+inner(n)        #报错
+将提示句法错误：name 'n' is not defined，即n没有定义。虽然在主程序前面的inner()函数定义中，变量n被赋值10，但主程序无法使用inner()函数中的变量n，因此报错。
+每个函数内部的变量，其他函数也无法使用。例：
+#函数作用域示例2
+
+def inner1(n):
+    n = 10
+    print('inner', n)
+
+def inner2():
+    print(n)
+
+#主程序
+inner1(10)
+inner2()        #报错
+所提示的出错信息与前一段示例类似。
+因此函数内部变量一般称为局部变量。
+自定义函数能够读取并使用主程序(同一个程序中的)中变量的值，因此主程序中的变量，也称为全局变量。例：
+#函数作用域示例3
+
+def inner():
+    print('inner', n)
+
+#主程序
+
+n=100
+inner()
+从示例3代码中可以看到，inner()函数内部并没有对n进行定义，但是能够从全局变量n中得到值100。但是自定义函数一般不能[^4]改变全局变量的值。例：
+#函数作用域示例4
+
+def inner():
+    n=10
+    print('inner', n)
+
+#主程序
+
+n=100
+inner()
+print('outer', n)
+可知，虽然在自定义函数内部，将n赋值了10，但是在主程序中的全局变量n的值仍然是100。
+这个是怎么回事呢？是调用自定义函数inner()过程中，，全局变量n的值由100被赋值为10，然后从inner()函数返回的时候，n又被改回100了嘛？这似乎合理，但请看：
+#函数作用域示例5
+
+def inner():
+    print('inner', n)
+    n=10
+
+#主程序
+
+n=100
+inner()
+print('outer', n)
+程序出现错误，local variable 'n' referenced before assignment，即局部变量n赋值前被使用/引用。示例4与5中，变量n被定义了(赋值就是一种定义)，因此其中的n虽然与全局变量n同名，但其实是局部变量。
+因此，示例4中使用的n是局部变量，其值为10，与全局变量n(值为100)无关；示例5中使用的n也是局部变量，在打印之前，并没有值，因此出错。只有示例3，由于函数内部没有对n进行定义，因此使用的是全局变量n的值。
+最后要说明的一点是，对在自定义函数中与全局变量同名的变量，只要在自定义函数内部对该同名变量进行了任何形式[^4]的赋值，无论在该函数体内的哪个位置，该同名变量即成为局部变量，与同名全局变量无关。以下是更多示例：
+#函数作用域示例6
+
+def inner():
+    print('inner', n)
+    n=n
+
+#主程序
+
+n=100
+inner()
+print('outer', n)
+#函数作用域示例7
+
+def inner():
+    n=n
+    print('inner', n)
+
+#主程序
+
+n=100
+inner()
+print('outer', n)
+最后一个示例比较有趣，请读者自行分析。
+python内置函数
+python语言解释器内置了一大批函数，可以直接使用。函数具体可见：https://docs.python.org/3/library/functions.html
+本小节先介绍几个常用内置函数，后续还会陆续介绍。
+abs(x)
+Return the absolute value of a number. The argument may be an integer or a floating point number. If the argument is a complex number, its magnitude is returned.
+divmod(a, b)
+Take two (non complex) numbers as arguments and return a pair of numbers consisting of their quotient and remainder when using integer division. With mixed operand types, the rules for binary arithmetic operators apply. For integers, the result is the same as (a // b, a % b).
+round(number[, ndigits])
+Return the floating point value number rounded to ndigits digits after the decimal point. If ndigits is omitted or is None, it returns the nearest integer to its input.
+4.5 完整代码
+#求sigma1~m + sigma1~n + sigma1~k
+
+def compute_sum(end):
+    i = 0
+    total_n = 0
+
+    while i < end:
+        i = i + 1
+        total_n = total_n + i
+
+    return total_n
+
+n = int(input('请输入第1个整数，以回车结束。'))
+m = int(input('请输入第2个整数，以回车结束。'))
+k = int(input('请输入第3个整数，以回车结束。'))
+
+print('最终的和是：', compute_sum(m) + compute_sum(n) + compute_sum(k))
+      
+      
+      
+      
+      
+      
+      
+      
+      
