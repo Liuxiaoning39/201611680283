@@ -1,0 +1,239 @@
+1.
+# 多行字符串使用示例
+    ex_string = ''' 
+                字符行1
+                字符行2
+                字符行3
+                '''
+    print(ex_string)
+
+    print('''
+    字符行4
+    字符行5
+    字符行6''')
+    
+---  
+    print()函数的两个括号之间跨越了多行。
+    python语言允许()内的分隔符及变量/对象之间跨越多行，还同时允许其间有空格：
+
+    多行字符串表示的基本格式如下：
+    '''
+    字符行1
+    字符行2
+    字符行3
+      ...
+    字符行n
+    '''
+---
+  
+3. random模块
+例：
+    import random
+
+    number = random.randint(1, 1000)
+    print(number)
+
+例：
+    import random
+
+    def test1():
+        number = random.randint(1, 1000)
+        print(number)
+
+    def test2():
+        num = random.randint(10, 100)
+        print(num)
+
+    test1()
+    test2()
+
+---
+    import关键字的用途是加载/导入/引入模块
+    random模块是python标准库中的一个模块，无需另行安装就可以直接导入，
+    random模块提供了多个函数对象，这些函数功能都与随机数有关。
+
+    比如random模块内部有一个randint()函数，这个函数需要两个整数参数值，然后返回这两个值之间(闭区间)的一个随机整数。 
+    加载模块的方法就是：import 模块名。调用模块内函数的最常用方法是模块名.函数名(参数表)，
+    可以将.视作的，即调用某模块的某个函数。
+---
+
+4.math模块
+例：
+    import math
+
+    max_times = math.log2(64)
+    print(max_times)
+
+5.break及while...else
+# break 示例
+
+      i = 0
+      while i < 1000:
+          print('这里，i=', i)
+          break
+      print('==================')
+      i = 0
+      while i < 1000:
+          i += 1
+          if i==100:
+              print('if结构内部，i=', i)
+              break
+      print('==================')
+      i = 0
+      j=0
+      while i < 5:
+          print('i=', i)
+          while j < 100:
+              print('j=', j)
+              if j == 2:
+                  print('break出当前层循环结构')
+                  break
+              j += 1
+          i += 1
+          
+---
+      ceil()是math模块中的函数，功能是由一个浮点数得到对应的向上取整的整数。
+      break是python的关键字，用于退出break所在的当前层循环结构。
+---
+
+---
+      关键字else也可以被用在while循环结构中。
+      当while语句中的条件表达式的值成为或初始即为False时，运行else所带的语句块。
+      此时while结构的基本形式为：
+
+      while 条件表达式:       #条件表达式值为True
+          循环体
+      else:                   #当条件表达式值为False
+          语句块
+---
+
+
+
+
+拓展与知识点总结
+
+python标准库。
+math与random都是python标准库中的模块，是随着python语言的安装自动安装的。
+python标准库中除了一些内置函数及math与random模块外，还有很多模块，涉及到字符处理、数学计算、文件、网络、图形等等。
+
+python标准库的具体使用可参见官方文档：https://docs.python.org/3/library/index.html
+python标注库内容丰富功能强大，所以可以针对自己的兴趣，时常翻看python标准库的文档，了解各种库的用途。
+在实际任务中，首先要想到是否标准库中有可以实现类似功能的模块，或者是借助标准库中的模块来完成，然后查阅文档，再进行编程。
+
+random()函数。除了介绍过的可以用该模块下的randint()函数来产生随机整数以外，
+下例是用该模块下的random()直接产生[0.0, 1.0)之间的浮点数。该模块内还有很多与随机数相关的函数，
+具体可参考官方文档：https://docs.python.org/3/library/random.html
+      # random生成浮点数示例
+      import random
+
+      i=0
+      while i < 5:
+          n = random.random()
+          print(n)
+          i += 1
+          
+math模块，提供数学函数等功能。
+具体函数与使用可参考官方文档：https://docs.python.org/3/library/math.html 列举几个常用的函数如下：
+      math.ceil(x)
+      Return the ceiling of x, the smallest integer greater than or equal to x.
+      math.floor(x)
+      Return the floor of x, the largest integer less than or equal to x.
+      math.exp(x)
+      Return e**x
+      math.log(x[, base])
+      With one argument, return the natural logarithm of x (to base e).
+      With two arguments, return the logarithm of x to the given base.
+      math.log2(x)
+      Return the base-2 logarithm of x. This is usually more accurate than log(x, 2).
+      math.log10(x)
+      Return the base-10 logarithm of x. This is usually more accurate than log(x, 10).
+      math.sqrt(x)
+      Return the square root of x.
+      math.sin(x)
+      Return the sine of x radians.
+      math.cos(x)
+      Return the cosine of x radians.
+完整代码
+
+'''
+函数及程序结构示例
+猜数游戏1.0
+几个函数的具体代码，没有给出，请大家自行设计字符图案。
+'''
+      import random, math
+
+
+      def win():
+          #自行设计
+
+      def lose():
+          #自行设计
+
+      def game_over():
+          #自行设计
+
+      def show_team():
+          #自行设计
+
+      def show_instruction():
+          #自行设计
+
+      def menu():
+          print('''=====游戏菜单=====
+                      1. 游戏说明
+                      2. 开始游戏
+                      3. 退出游戏
+                      4. 制作团队
+                   =====游戏菜单=====''')
+
+      def guess_game():
+          n = int(input('请输入一个大于0的整数，作为神秘整数的上界，回车结束。'))
+          number = random.randint(1, n)
+          max_times = math.ceil(math.log(n, 2))
+          guess_times = 0
+
+          while guess_times <= max_times:
+              guess = int(input('请输入你猜测的整数，回车结束。'))
+              guess_times += 1
+              print('一共可以猜', max_times, '次')
+              print('你已经猜了', guess_times, '次')
+
+              if guess == number:
+                  win()
+                  print('神秘数字是：', guess)
+                  print('你比标准次数少', max_times-guess_times, '次')
+                  break
+              elif guess > number:
+                  print('抱歉，你猜大了')
+              else:
+                  print('抱歉，你猜小了')
+
+          else:
+              print('神秘数字是：', number)
+              lose()
+
+      # 主函数
+      def main():
+          while True:
+              menu()
+              choice = int(input('请输入你的选择'))
+              if choice == 1:
+                  show_instruction()
+              elif choice == 2:
+                  guess_game()
+              elif choice == 3:
+                  game_over()
+                  break
+              else:
+                  show_team()
+
+
+      #主程序
+      if __name__ == '__main__':
+          main()
+
+
+
+
+
+
