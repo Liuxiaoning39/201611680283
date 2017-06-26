@@ -1,0 +1,109 @@
+1.自定义函数
+例：
+  # 函数定义
+  def fake_print(content):
+      print(content)
+
+  # 主程序
+  fake_print('假装是print()函数。')
+
+---
+      def 函数名(参数表):
+          语句块
+      函数名(参数表)，一般称为函数头；
+      函数定义内部的语句块又称为函数体；
+      参数表就是一系列参数，可以有0，1或多个参数，多个参数之间用,分隔。
+---      
+
+例：
+（return）
+      def compute_sum(end):
+          i=0
+          total_n = 0
+          while i<end:
+              i += 1
+              total_n += i
+          return total_n
+
+      print(compute_sum(100))
+(直接打印)
+      def compute_sum(end):
+          i = 0
+          total_n = 0
+          while i < end:
+              i = i + 1
+              total_n = total_n + i
+          print(total_n)      #注意缩进
+   
+      compute_sum(100)
+
+2.return
+
+一个函数根据需要可以有0,1或多个return语句。
+例：
+      def example_0(number):
+          number += 10
+
+      def example_1(number):
+          number += 10
+          return
+      def example_2(number):
+          number += 10
+          return number
+      # 主程序
+      n=100
+      print('0:',example_0(n))
+      print('1:',example_1(n))
+      print('2:',example_2(n))
+      
+      #结果：
+      0: None
+      1: None
+      2: 110
+---
+      没有return语句或者return语句后面没有参数，调用函数后函数的值都是None。
+      因此，在程序不需要返回值的时候，可以不用return语句。
+---
+例：
+      def example_multi(number):
+          return '多个返回值', number*10, number, number/10
+      # 主程序
+      n=100
+      print(example_multi(100))
+      #结果
+      ('多个返回值', 1000, 100, 10.0)
+---
+      可以利用return语句返回多个返回值[^3]，且返回值的类型可以不同。
+键入如下代码观察执行结果。
+def zero_flag(number):
+    if number < 0:
+        return -1
+    elif number == 0:
+        return 0
+    else:
+        return 1
+
+# 主程序
+print('First:', zero_flag(100))
+print('Second:', zero_flag(0))
+print('Third:', zero_flag(-100))
+---
+    在函数中，运行到return语句时，该return语句除了提供函数返回值以外，
+    同时还会使程序跳出函数体(不会执行return语句之后函数体内的语句)，
+    直接返回到函数调用处。
+    因此，即使一个函数有多个return语句，每次调用时，最多仅会执行某一个return语句。
+    
+    一个自定义函数中，只能执行一个return
+---
+      
+3.      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
