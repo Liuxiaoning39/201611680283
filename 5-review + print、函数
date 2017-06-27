@@ -25,8 +25,11 @@
     字符行n
     '''
 ---
-  
-3. random模块
+
+
+函数
+
+2. random模块
 例：
     import random
 
@@ -57,14 +60,14 @@
     可以将.视作的，即调用某模块的某个函数。
 ---
 
-4.math模块
+3.math模块
 例：
     import math
 
     max_times = math.log2(64)
     print(max_times)
 
-5.break及while...else
+4.break及while...else
 # break 示例
 
       i = 0
