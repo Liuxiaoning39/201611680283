@@ -5,11 +5,13 @@ get_word_table(filename)函数与第8节中的字表统计函数的方法类似�
 得到test.txt文件的词表以后，我们统计词频
 
 count_words_freq(filename, words)函数有两个参数，分别是要统计的文本文件filename及词表words。
-count()是统计字符串频次的方法，基本用法为：字符串.count(str)，参数也是字符串，功能是在字符串对象中统计参数字符串出现的频次，返回一个整型数。
+count()是统计字符串频次的方法，基本用法为：字符串.count(str)，参数也是字符串，
+功能是在字符串对象中统计参数字符串出现的频次，返回一个整型数。
 
 word_freq_pairs是二维列表，初始为空。其中每一个元素也是列表，存放[词，词频]。
 通过一个列表解析，得到words，存放filename文件中所有去掉词性标记后的词汇。
-在for word in words:循环中,对每一个在words中的词汇，如果与word_freq_pairs中某一个item相同，则对应的item的频次加一，如果不在，则在word_freq_pairs中增加一个item，
+在for word in words:循环中,对每一个在words中的词汇，
+如果与word_freq_pairs中某一个item相同，则对应的item的频次加一，如果不在，则在word_freq_pairs中增加一个item，
 其初始频次为1。其中，for...else的用法与while...else的用法类似。
 
 我们仍然用test.txt作为测试实验。
