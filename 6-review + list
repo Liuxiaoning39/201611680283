@@ -1,0 +1,351 @@
+1.引入
+例：
+      # 正序输出单词示例2，假设确定会输入5个单词
+      word1 = None
+      word2 = None
+      word3 = None
+      word4 = None
+      word5 = None
+
+      i = 0
+      while i < 5:
+          word = input('请输入一个单词，回车结束')
+          if word1 == None:
+              word1 = word
+          elif word2 == None:
+              word2 = word
+          elif word3 == None:
+              word3 = word
+          elif word4 == None:
+              word4 = word
+          else:
+              word5 = word
+          i += 1
+
+      print(word5)
+      print(word4)
+      print(word3)
+      print(word2)
+      print(word1)
+ 
+ 
+2.list
+(1)list用法
+例:
+
+      numbers = [1, 2, 3, 4, 5]
+
+      print(numbers[1])
+      print(numbers[2])
+      print(numbers[3])
+      print(numbers[4])
+      print(numbers[0])
+      print(numbers[5])     # 错误，越界
+      
+
+***
+    python语言用序列来存储一系列对象，其中每个对象对应一个从0开始的连续编号。
+    list数据类型是一种序列，中文名称为列表可以存放数字、字符串等各类对象，
+    存放的方式是：[对象1, 对象2, ... ,对象n]，即对象均放在[]之间，且用,分隔。
+    
+    本段代码中，[1, 2, 3, 4, 5]就是一个list，这个list被赋值给了numbers，于是number也成为list类型，其值就是[1, 2, 3, 4, 5]。
+    序列中的对象根据其编号来进行定位，这个编号一般称为索引，取得序列某索引对象的方法是：序列名[索引]。
+    如果索引没在序列的范围之内，此时取该索引位置的对象，解释器就会提示出错。一般称为索引越界。
+***
+
+(2）(not) in 
+例:
+
+      numbers = [1, 2, 3, 4, 5]
+      n = int(input('请输入一个整数，回车结束'))
+
+      if n in numbers:
+          print('Yes,', n, 'is in numbers.')
+      else:
+          print('No,', n, 'is not in numbers.')
+
+      print('--------------分割线---------------')
+
+      if n+1 not in numbers:
+          print('No,', n+1, 'is not in numbers.')
+      else:
+          print('Yes,', n+1, 'is in numbers.')
+***
+    in是python关键字，可以用来判断某个对象是否在一个序列中，
+    基本格式是：对象 in 序列，构成一个条件表达式，如果对象在序列中，则表达式的值为True，否则为False。
+    否定格式：对象 not in 序列，该条件表达式的值与基本格式的相反。
+    其中not也是python关键字，意思是不。
+    与in相关，有两个内置函数any()和all()，但常用程度远不及in。
+    键入如下代码并观察运行结果。
+***
+(3)any(...) + all(...)
+例:
+    print('any first:', any([0, 0, '', None, False]))
+    print('any second:', any([0, 5, '', None, False]))
+    print('all first:', all([5, 6, 'word', True]))
+    print('all second:', all([5, 10, 'fake', None, True]))
+    
+    any(...)是python内置函数，可以用来判断某个序列中是否存在真值，如果有，就返回True，如果没有（或者序列为空）则返回False。
+
+    all(...)是python内置函数，可以用来判断某个序列中是否均为真值，如果均是，就返回True，否则返回False。
+***
+
+(4)空list + append + len
+例:
+      numbers = []          # numbers = list()
+      print(numbers)
+
+      i = 0
+      while i < 9:
+          numbers.append(i)
+          i += 1
+
+      i = 0
+      while i < len(numbers):
+          print('numbers[', i, ']=', numbers[i], sep = '')
+          print(numbers)
+          i += 1
+***
+    []是空的list，可赋值给一个对象，该对象类型即成为list，值为一个空的list：[]，
+    或者用numbers = list()，两者等价。
+    例1-3中words与numbers分别通过赋值语句得到了list类型以及值，这个过程称作初始化。
+    
+    append()是python内置函数，但与前面模块内的函数和我们先前自定义的函数不同，
+    append()是list类型对象的函数，任意一个对象被初始化成list类型以后，均可以使用append()函数，
+    一般将类型的函数称为方法，如append()方法。
+    append()方法的功能是向一个list对象在尾部插入对象，
+    用法是list对象.append(对象)，这个list对象可以是空list也可以非空，所加入对象的编号会立即得到对应位置的编号索引。
+    
+    len(...)是python内置函数，用法为len(iterable)，其中的参数iterable是一个序列，len函数可以返回该序列内所含元素的个数。
+***
+
+
+3.for循环的基本用法 + range
+例：
+    # for 循环求和
+
+    n = int(input('请输入一个整数n，回车结束。'))
+    total = 0
+    for i in range(n+1):
+        total += i
+
+    print('和为', total)
+
+***
+    for是python关键字，与in共同组成for循环。
+    每取一次对象执行一次语句块，直到取完序列中最后一个元素。
+    基本用法如下：
+    
+    for 对象 in 序列:
+        语句块
+        
+***
+
+例：
+      for i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+          print(i)
+
+      print('-------------分隔符--------------')
+
+      for i in range(10):
+          print(i)
+
+      print('-------------分隔符--------------')
+
+      for i in range(10):
+          print('指定循环打印10次')
+
+***
+    本段代码中的range()是一个内置函数，基本用法是在()中放置一个整数参数，如：range(n)。
+    range(n)在for循环中将会被调用n次，range(n)每次均会返回一个数字，数字从0开始到n-1结束，因此其区间是[0,n)，共会返回n个数字。
+***
+
+
+4.循环的嵌套
+
+例：
+      for i in range(3):
+          for j in range(3):
+              for k in range(2):
+                  print(i, j, k, '=', i*j*k)
+***
+    每个for循环结构都有自己的循环体，多个for循环嵌套时，循环体内包含下一层次的for循环结构，嵌套一样依靠代码缩进来区分层次。
+    与while循环一样，break关键字可以立即跳出当前层循环。
+***
+
+5.
+
+***
+      python自身内置了π及e的较为精确的数值：
+    使用方法
+          import math
+          print(math.pi)
+          print(math.e)
+***
+
+#蒙特卡洛方法求π的值
+
+      import random
+
+      def monte_carlo_method(n):
+          inside_number = 0
+          for i in range(n):
+              x, y = random.random(),random.random()
+              if x*x+y*y < 1:
+                  inside_number += 1
+          return 4*inside_number/n
+
+
+      # 测试
+      number = int(input('input times please:'))
+      monte_carlo_method(number)
+
+
+
+----------
+***
+      可以为range()函数同时设置起始和终点参数，即range(start, end)，
+      调用可以依次得到[stard, end)之间的整数，起始参数如果没有给出，则默认从0开始。
+      完整的range()函数还有第三个参数，即间隔，请看示例：
+***
+#示例：      
+      for i in range(1, 100, 10):
+          print(i)
+      print('-----------------分隔线------------------')
+      for i in range(100, 10, -10):
+          print(i)
+----------
+
+
+      print()函数除了一些打印的位置参数以及sep关键字参数外，
+      end是另一个关键字参数，用来控制当前print语句行尾打印字符的值，当不设置end关键字时，默认是打印换行。
+
+5.format
+例：
+      print('a={0},b={1},c={2}'.format(0,1,2))
+      print('a={1},b={0},c={2}'.format(0,1,2))
+      print('----------分隔符-------------')
+     
+      n=20
+      print('{:3},{:3}'.format(n,10*n))
+      print('{:3},{:3}'.format(10*n,n))
+      
+      #结果
+          a=0,b=1,c=2
+          a=1,b=0,c=2
+          ----------分隔符-------------
+           20,200
+          200, 20
+
+例：
+      n=20
+      print('{:<3},{:3}'.format(n,10*n))
+      print('{:3},{:3}'.format(10*n,n))
+      
+      结果：
+          a=0,b=1,c=2
+          a=1,b=0,c=2
+          ----------分隔符-------------
+          20 ,200
+          200, 20
+---
+      format()是字符串类型的一个方法，可以利用format()方法来进行字符串的格式统一。
+      
+      基本用法1：'xxx{位置}xxx{位置}...xxx{位置}xxx'.
+                format(变量, 变量..., 变量)。
+                format中的多个变量是一个序列，从0开始自动连续编号，左侧字符串内的位置就是变量的索引(不要求一定顺序排列)，
+                按照索引位置，由右侧各个变量的值来替换{位置}。
+                
+      基本用法2：'xxx{:整数}xxx{:整数}...xxx{:整数}xxx'.format(变量, 变量..., 变量)。
+                左侧字符串内如果没有指定索引，则按照右侧序列变量顺序替换字符串内的{:整数}。
+                {:整数}表示替换变量在字符串中的格式，其中的整数表示替换变量占据的宽度(字符个数)。
+                
+     左对齐：加上 < 
+     右对齐： 默认
+---
+
+
+
+str.format()
+      格式字符串的format()方法很多时候，配合print()一起使用，
+      具体内容可参考： https://docs.python.org/3/library/string.html#formatstrings
+      这里仅举一些实例进行一般的用法说明。
+
+      # str.format()示例1
+                  print('{}, {}, {}'.format('a', 'b', 'c'))
+                  print('{2}, {1}, {0}'.format('a', 'b', 'c'))
+                  print('{0}{1}{0}'.format('abra', 'cad'))     # arguments' indices can be repeated
+
+      # str.format()示例2
+
+                  print('Coordinates: {latitude}, {longitude}'.format(latitude='37.24N', longitude='-115.81W'))
+                  
+                  coord = [3, 5]
+                  print('X: {0[0]};  Y: {0[1]}'.format(coord))
+      # str.format()示例3
+
+                  print('{:<30}'.format('left aligned'))
+                  print('{:>30}'.format('right aligned'))
+                  print('{:^30}'.format('centered'))
+                  print('{:*^30}'.format('centered'))     # use '*' as a fill char
+
+            #结果：
+                      left aligned                  
+                                       right aligned
+                                 centered           
+                      ***********centered***********
+      # str.format()示例4
+
+                  print('{:+f}; {:+f}'.format(3.14, -3.14))
+                  print('{: f}; {: f}'.format(3.14, -3.14))
+
+                  print('{:,}'.format(1234567890))
+                  
+                  
+
+
+
+
+九九乘法表：
+        for i in range(1, 10):
+            for j in range(1, 10):
+                print('{} x {} = {:<5}'.format(i, j, i*j), end = ' ')
+            print()
+
+
+
+
+
+***
+      转义字符	转义后含义
+      \\	Backslash ()  
+      \'	Single quote (')
+      \"	Double quote (")
+      \a	ASCII Bell (BEL)
+      \b	ASCII Backspace (BS)
+      \f	ASCII Formfeed (FF)
+      \n	ASCII Linefeed (LF)
+      \r	ASCII Carriage Return (CR)
+      \t	ASCII Horizontal Tab (TAB)
+***
+
+***
+      sum(...), max(...), min(...)函数
+      即实现对序列求和、求最大值，最小值的函数。
+***
+
+***
+      pass, continue, break, return, exit()
+      
+      以上关键字/函数的区别与练习可用以下表格概括：
+
+      关键字	      功能
+      pass	     什么也不做，纯占位用
+      continue   跳出本次循环
+      break	     跳出本层循环
+      return     退出函数
+      exit()     退出程序
+***
+
+
+
